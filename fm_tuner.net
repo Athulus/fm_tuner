@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/vagrant/workspace/fm_tuner/fm_tuner.sch)
-    (date "Mon 22 Feb 2016 02:14:47 AM UTC")
+    (date "Sat 27 Feb 2016 09:24:07 PM EST")
     (tool "Eeschema 0.201508140901+6091~28~ubuntu14.04.1-product")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -29,7 +29,7 @@
       (tstamp 567F14F3))
     (comp (ref U1)
       (value 16x2_LCD)
-      (footprint fm_tuner:16x2_LCD)
+      (footprint fm_tuner:16x2_LCD_noscreen)
       (libsource (lib fm_tuner) (part 16x2_LCD))
       (sheetpath (names /) (tstamps /))
       (tstamp 567F157A))
@@ -118,59 +118,6 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 56A1BB54)))
   (libparts
-    (libpart (lib device) (part C)
-      (description "Unpolarized capacitor")
-      (footprints
-        (fp C?)
-        (fp C_????_*)
-        (fp C_????)
-        (fp SMD*_c)
-        (fp Capacitor*))
-      (fields
-        (field (name Reference) C)
-        (field (name Value) C))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive))))
-    (libpart (lib device) (part Led_Small)
-      (description Led)
-      (footprints
-        (fp CP*)
-        (fp SM*))
-      (fields
-        (field (name Reference) D)
-        (field (name Value) Led_Small))
-      (pins
-        (pin (num 1) (name K) (type passive))
-        (pin (num 2) (name A) (type passive))))
-    (libpart (lib device) (part POT)
-      (description Potentionmetre)
-      (fields
-        (field (name Reference) RV)
-        (field (name Value) POT))
-      (pins
-        (pin (num 1) (name 1) (type passive))
-        (pin (num 2) (name 2) (type passive))
-        (pin (num 3) (name 3) (type passive))))
-    (libpart (lib device) (part R)
-      (description Resistor)
-      (footprints
-        (fp R_*)
-        (fp Resistor_*))
-      (fields
-        (field (name Reference) R)
-        (field (name Value) R))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive))))
-    (libpart (lib device) (part SW_PUSH)
-      (description Button)
-      (fields
-        (field (name Reference) SW)
-        (field (name Value) SW_PUSH))
-      (pins
-        (pin (num 1) (name 1) (type passive))
-        (pin (num 2) (name 2) (type passive))))
     (libpart (lib conn) (part USB_B)
       (description "B connector")
       (footprints
@@ -232,6 +179,36 @@
         (pin (num 30) (name "(PCINT16/RXD)PD0") (type BiDi))
         (pin (num 31) (name "(PCINT17/TXD)PD1") (type BiDi))
         (pin (num 32) (name "(PCINT18/INT0)PD2") (type BiDi))))
+    (libpart (lib device) (part Led_Small)
+      (description Led)
+      (footprints
+        (fp CP*)
+        (fp SM*))
+      (fields
+        (field (name Reference) D)
+        (field (name Value) Led_Small))
+      (pins
+        (pin (num 1) (name K) (type passive))
+        (pin (num 2) (name A) (type passive))))
+    (libpart (lib device) (part SW_PUSH)
+      (description Button)
+      (fields
+        (field (name Reference) SW)
+        (field (name Value) SW_PUSH))
+      (pins
+        (pin (num 1) (name 1) (type passive))
+        (pin (num 2) (name 2) (type passive))))
+    (libpart (lib device) (part R)
+      (description Resistor)
+      (footprints
+        (fp R_*)
+        (fp Resistor_*))
+      (fields
+        (field (name Reference) R)
+        (field (name Value) R))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
     (libpart (lib fm_tuner) (part 16x2_LCD)
       (fields
         (field (name Reference) U)
@@ -289,16 +266,39 @@
         (pin (num 8) (name GND) (type input))
         (pin (num 9) (name Vin) (type input))
         (pin (num 10) (name RIN) (type input))
-        (pin (num 11) (name LIN) (type input)))))
+        (pin (num 11) (name LIN) (type input))))
+    (libpart (lib device) (part C)
+      (description "Unpolarized capacitor")
+      (footprints
+        (fp C?)
+        (fp C_????_*)
+        (fp C_????)
+        (fp SMD*_c)
+        (fp Capacitor*))
+      (fields
+        (field (name Reference) C)
+        (field (name Value) C))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib device) (part POT)
+      (description Potentionmetre)
+      (fields
+        (field (name Reference) RV)
+        (field (name Value) POT))
+      (pins
+        (pin (num 1) (name 1) (type passive))
+        (pin (num 2) (name 2) (type passive))
+        (pin (num 3) (name 3) (type passive)))))
   (libraries
-    (library (logical device)
-      (uri /usr/share/kicad/library/device.lib))
-    (library (logical conn)
-      (uri /usr/share/kicad/library/conn.lib))
+    (library (logical fm_tuner)
+      (uri /home/vagrant/workspace/fm_tuner/fm_tuner.lib))
     (library (logical atmel)
       (uri /usr/share/kicad/library/atmel.lib))
-    (library (logical fm_tuner)
-      (uri /home/vagrant/workspace/fm_tuner/fm_tuner.lib)))
+    (library (logical conn)
+      (uri /usr/share/kicad/library/conn.lib))
+    (library (logical device)
+      (uri /usr/share/kicad/library/device.lib)))
   (nets
     (net (code 1) (name "Net-(IC1-Pad27)")
       (node (ref U2) (pin 4))
